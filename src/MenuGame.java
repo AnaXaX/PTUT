@@ -75,7 +75,7 @@ public class MenuGame {
             }
         }
         if(joueur.getMenu() == true) {
-            System.out.println(choixY);
+            //System.out.println(choixY);
             choixX= 570;
             menuImg.draw(0, 0, 800, 600);
             choixImg.draw(choixX,choixY);
@@ -108,6 +108,7 @@ public class MenuGame {
                                     joueur.setGameStart(true);   
                            }
                             if(choixContinue == 2) {
+                                init();
                                 joueur.setNewGame(true);
                                 joueur.setNom("");
                                 background = new Image("ressource/Background/newGame.png");
@@ -140,10 +141,11 @@ public class MenuGame {
                         }
                     break;
                     case 3:
+                        // sauvegarde
                         if(choixMenu == 6) {  
-                            
-                            joueur.setMenu(false);
-                           }
+                            joueur.setMenu(false); //temporairement
+                        }
+                        //exit
                         if(choixMenu == 8) joueur.setMenu(false);
                     break;
                 }

@@ -4,12 +4,11 @@
  * and open the template in the editor.
  */
 
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.KeyListener;
 import org.newdawn.slick.SlickException;
+
+enum GameStatus { StartMenu, PlayArea, PlayMenu, NewGameRequested, Unknown };
 
 /**
  *
@@ -38,7 +37,10 @@ public class JoueurCommande implements KeyListener {
     
    
     public void keyPressed(int key, char c) {
-        if(joueur.getGameBegin() == true || joueur.getMenu() == true) {
+        
+        GameStatus status = getGameStatus();
+                
+        if(status==GameStatus.StartMenu) {
             switch (key) {
                     case Input.KEY_UP:
                         joueur.setDirection(1);
@@ -53,9 +55,8 @@ public class JoueurCommande implements KeyListener {
                         joueur.setMoving(true);
                     break;
             }
-
         }
-        if(joueur.getNewGame() == true) {
+        else if(status==GameStatus.NewGameRequested) {
 	 if (joueur.getNom().length()<10 && key != Input.KEY_BACK) 
 	  if (c!=0) {
             joueur.setNom(joueur.getNom() + c);
@@ -68,8 +69,7 @@ public class JoueurCommande implements KeyListener {
               joueur.setGameStart(true);
           }
         }
-        
-        if(joueur.getGameStart()== true && joueur.getNewGame() == false && joueur.getMenu() == false) {
+        else if(status==GameStatus.PlayArea) {
             switch (key) {
             case Input.KEY_UP:
                 this.joueur.setDirection(0); 
@@ -94,6 +94,25 @@ public class JoueurCommande implements KeyListener {
                 this.joueur.setMenu(true);
             }
         }
+        else if(status==GameStatus.PlayMenu) {
+            switch (key) {
+                case Input.KEY_UP:
+                    joueur.setDirection(1);
+                    joueur.setMoving(true);
+                    //System.out.println("up");
+                break;
+                case Input.KEY_DOWN:
+                    joueur.setDirection(2);
+                    joueur.setMoving(true);
+                    //ystem.out.println("down");
+                break;
+                case Input.KEY_ENTER:
+                    joueur.setDirection(3);
+                    joueur.setMoving(true);
+                    //System.out.println("enter");
+                break;
+            }
+        }
 }
 
     @Override
@@ -114,6 +133,23 @@ public class JoueurCommande implements KeyListener {
 
     @Override
     public void inputStarted() {
+    }
+
+    private GameStatus getGameStatus() {
+        GameStatus status = GameStatus.Unknown;
+        if(joueur.getGameBegin() == true || joueur.getMenu() == true) {
+            status = GameStatus.StartMenu;
+        }
+        if(joueur.getNewGame() == true){
+            status = GameStatus.NewGameRequested;
+        }
+        if(joueur.getGameStart()== true && joueur.getNewGame() == false && joueur.getMenu() == false) {
+            status = GameStatus.PlayArea;
+        }
+        if(joueur.getGameStart()== true && joueur.getNewGame() == false && joueur.getMenu() == true) {
+            status = GameStatus.PlayMenu;
+        }
+        return status;
     }
 
    
