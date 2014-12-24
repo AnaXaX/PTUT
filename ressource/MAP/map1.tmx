@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="ressource" tilewidth="32" tileheight="32">
+  <image source="../ressource.png" trans="ffffff" width="288" height="4832"/>
+ </tileset>
+ <layer name="Sol" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3DAQkAAAwDoD3b+ncaPIeCvaSqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqquofE6BckkCcAAA=
+  </data>
+ </layer>
+ <layer name="Niveau 1" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3csTIEQRQF0N5NkSHDhyFbMnwwMmT4BW8jgSpqd3t6r6lzqm4+Pbe631QH0xoAAAAAAAAAkOhg2dph5Wi57ydh7bh6OKmc6iPCWfVwXrnQx2QeF609VZ4X+34S1l6qh9fK24Z96HEa7/U+PyqfG77XbXtkGtv2CDAFMzuLmT3eb3vgr5lt//S3yx6wf/rb5bvVNy8wwmXlqnOuh65gXlaVm865HbqCedFHFn1k0UcWfWTRRxZ9ZNFHFn1k0UcWfWTRRxZ9ZNFHFn1k0UeWu8p95zwMXQEAAAAAAADAfPg/Yhb/R8zi/4gAAAAA39wlZnGXmMVdIvxkbmQxN7KYG/PjzMvizMvizAMA/oMvXaZiF0CcAAA=
+  </data>
+ </layer>
+</map>
